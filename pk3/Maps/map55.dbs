@@ -1,0 +1,50 @@
+type = "Doom Builder Map Settings Configuration";
+gameconfig = "GZDoom_DoomUDMF.cfg";
+strictpatches = 0;
+
+maps
+{
+	
+	WDI55
+	{
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 0;
+				location = "C:\\Program Files (x86)\\Doom\\Zandronum\\doom2.wad";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+			}
+			
+			
+			resource1
+			{
+				type = 2;
+				location = "C:\\Program Files (x86)\\Doom\\Zandronum\\WhoDunIt_Classic\\WhoDunItr83.pk3";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+			}
+			
+		}
+		
+		
+		grid
+		{
+			background = "";
+			backsource = 0;
+			backoffsetx = 0;
+			backoffsety = 0;
+			backscalex = 100;
+			backscaley = 100;
+			gridsize = 2;
+		}
+		
+	}
+	
+}
+

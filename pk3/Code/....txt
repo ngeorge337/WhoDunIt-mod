@@ -1,0 +1,31 @@
+ACTOR KEEPTHEMCLOSE 
+{
+  PainChance 0
+  Speed 40
+  Radius 42
+  Height 128
+  Mass 1000000000000
+  Monster
+  +FLOORCLIP
+  +FRIGHTENED
+  +SPECTRAL
+  +NOTARGET
+  +NOTIMEFREEZE
+  +INVULNERABLE
+  +DONTBLAST
+  Obituary "Forgot what really mattered."
+  States
+  {
+  Spawn:
+    APPR A 1 A_Look
+    Loop
+  See: 
+   APPR A 1 A_JumpIfInTargetLOS ("Flee", 100, JLOSF_DEADNOJUMP, 0, 0)
+   Loop
+  Flee: 
+    APPR A 17 A_Chase
+    APPR A 1 A_Changeflag("INVISIBLE", TRUE)
+    Stop
+    
+  }
+}

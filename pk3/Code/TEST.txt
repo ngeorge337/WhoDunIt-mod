@@ -1,0 +1,9 @@
+ACTOR FDRtest 30542
+{
+  States
+  {
+  Spawn:
+    TNT1 A 1 A_Explode [255, 128, 1, 1, 0, 0)
+    loop
+  }
+}

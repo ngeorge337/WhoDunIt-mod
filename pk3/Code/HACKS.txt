@@ -1,0 +1,554 @@
+Actor DeathCamera
+{
+	Radius 2
+	Height 4
+	Mass 10
+	scale 0.1
+	Obituary ""
+	SeeSound ""
+	ReactionTime 2500
+	DamageFactor "Gas", 0.0
+	CameraHeight 1
+	-SOLID
+	-SHOOTABLE
+	+NOBLOOD
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+DONTBLAST
+	+NOCLIP
+    States
+{
+	Spawn:
+	TNT1 A 0
+    	TNT1 A 1
+    	goto lolloop
+	
+	LolLoop:
+	TNT1 A 1
+	loop	
+}
+}
+
+Actor PowerOff: Inventory
+{
+Inventory.MaxAmount 1
+}
+
+Actor MurderDoorUnblocker : CustomInventory 
+{
+  inventory.pickupmessage ""
+  inventory.pickupsound ""
+  Inventory.MaxAmount 1
+  +INVENTORY.UNDROPPABLE
+  states
+  {
+  Spawn:
+    AWI3 A -1
+    stop
+  Pickup:
+    TNT1 A 0 
+    TNT1 A 0 A_ChangeFlag("NOBLOCKMONST", 1)
+    stop
+  }
+}
+
+Actor MurderDoorBlocker : CustomInventory 
+{
+  inventory.pickupmessage ""
+  inventory.pickupsound ""
+  Inventory.MaxAmount 1
+  +INVENTORY.UNDROPPABLE
+  states
+  {
+  Spawn:
+    AWI3 A -1
+    stop
+  Pickup:
+    TNT1 A 0 
+    TNT1 A 0 A_ChangeFlag("NOBLOCKMONST", 0)
+    stop
+  }
+}
+
+Actor HudCleaner: Inventory
+{
+Inventory.MaxAmount 1
+}
+
+Actor HudAlive: Inventory
+{
+Inventory.MaxAmount 1
+  -INVENTORY.INTERHUBSTRIP
+}
+
+Actor ScriptDeath : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+Actor MarkMe : Inventory
+{
+Inventory.MaxAmount 1
+  -INVENTORY.INTERHUBSTRIP
+}
+
+actor InoKill : Inventory 
+{
+  inventory.pickupmessage ""
+  inventory.pickupsound ""
+  Inventory.MaxAmount 1
+}
+
+actor Hero: Inventory 
+{
+  inventory.pickupmessage ""
+  inventory.pickupsound ""
+  Inventory.MaxAmount 1
+}
+
+actor KillMarker: Inventory 
+{
+  inventory.pickupmessage ""
+  inventory.pickupsound ""
+  Inventory.MaxAmount 99
+}
+
+actor SlowCounter : Inventory 
+{
+  inventory.pickupmessage ""
+  inventory.pickupsound ""
+  Inventory.MaxAmount 4
+}
+
+
+actor TKHero: CustomInventory 
+{
+  inventory.pickupmessage ""
+  inventory.pickupsound ""
+  Inventory.MaxAmount 1
+  +INVENTORY.UNDROPPABLE
+  states
+  {
+  Spawn:
+    AWI3 A -1
+    stop
+  Pickup:
+    TNT1 A 0 
+    TNT1 A 0 ACS_ExecuteAlways(651, 0, 0, 0)
+    stop
+  }
+}
+
+actor BackstabHero: CustomInventory 
+{
+  inventory.pickupmessage ""
+  inventory.pickupsound ""
+  Inventory.MaxAmount 1
+  +INVENTORY.UNDROPPABLE
+  states
+  {
+  Spawn:
+    AWI3 A -1
+    stop
+  Pickup:
+    TNT1 A 0 
+    TNT1 A 0 ACS_ExecuteAlways(652, 0, 0, 0)
+    stop
+  }
+}
+
+actor Warm : Inventory //When this isn't present, the player will emit fog.
+{
+  inventory.pickupmessage ""
+  inventory.pickupsound ""
+  Inventory.MaxAmount 1
+}
+
+
+Actor TIDGiver : CustomInventory
+{
+
+  inventory.pickupmessage ""
+  inventory.pickupsound ""
+  Inventory.MaxAmount 1
+  +INVENTORY.UNDROPPABLE
+  states
+  {
+  Spawn:
+    AWI3 A -1
+    stop
+  Pickup:
+    TNT1 A 0 
+    TNT1 A 0 ACS_ExecuteAlways(102, 0, 0, 0)
+    stop
+  }
+}
+
+Actor NoRegen : Inventory
+{
+  Inventory.PickupSound ""
+  Inventory.MaxAmount 1
+  +INVENTORY.UNDROPPABLE
+}
+
+Actor TKToken : Inventory
+{
+  Inventory.PickupSound ""
+  Inventory.MaxAmount 3
+  +INVENTORY.UNDROPPABLE
+}
+
+ACTOR PowerStimpackRegen: PowerRegeneration
+{
+	Powerup.Duration -5
+}
+
+ACTOR PowerPoisonCure : PowerProtection	// Stops poison for a bit
+{
+	Powerup.Duration -6
+	DamageFactor "Poison", 0.0
+}
+
+ACTOR PowerResist20 : PowerProtection	// 20% resistance
+{
+	Powerup.Duration 3024000	// 24 hours lol
+	DamageFactor "CueMelee", 0.80
+	DamageFactor "ShovelMelee", 0.80
+	DamageFactor "BasicMelee", 0.80
+}
+
+ACTOR PowerResist20 : PowerProtection	// 20% resistance
+{
+	Powerup.Duration 3024000	// 24 hours lol
+	DamageFactor "CueMelee", 0.80
+	DamageFactor "ShovelMelee", 0.80
+	DamageFactor "BasicMelee", 0.80
+}
+
+ACTOR PowerResist40 : PowerProtection	// 40% resistance
+{
+	Powerup.Duration 3024000	// 24 hours lol
+	DamageFactor "CueMelee", 0.60
+	DamageFactor "ShovelMelee", 0.60
+	DamageFactor "BasicMelee", 0.60
+}
+
+ACTOR PowerResist60 : PowerProtection	// 60% resistance
+{
+	Powerup.Duration 3024000	// 24 hours lol
+	DamageFactor "CueMelee", 0.40
+	DamageFactor "ShovelMelee", 0.40
+	DamageFactor "BasicMelee", 0.40
+}
+
+ACTOR PowerResist80 : PowerProtection	// 80% resistance
+{
+	Powerup.Duration 3024000	// 24 hours lol
+	DamageFactor "CueMelee", 0.20
+	DamageFactor "ShovelMelee", 0.20
+	DamageFactor "BasicMelee", 0.20
+}
+
+ACTOR PowerCueDamage: PowerProtection
+{
+	Powerup.Duration 3024000
+	Damagefactor "CueMelee", 0.25
+}
+
+actor PowerMurderNerf : PowerDamage
+{
+	Powerup.Duration 3024000
+	//damagefactor "Gun", 1.25
+	damagefactor "Gun", 1.0
+}
+
+Actor PowerDamageNerf : PowerDamage
+{
+	Powerup.Duration 3024000
+	//damagefactor "Gun", 1.25
+	damagefactor "BasicMelee", 0.5
+	damagefactor "CueMelee", 0.5
+	damagefactor "ShovelMelee", 0.5
+}
+
+ACTOR CueDamage : PowerupGiver
+{
+	Game Doom
+	Game Heretic
+	Game Hexen
+	SpawnID 0
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.UNDROPPABLE
+	Inventory.MaxAmount 0
+	Powerup.Type CueDamage
+	States
+	{
+	Spawn:
+		GARD ABCD 6 Bright
+		Loop
+	}
+}
+
+ACTOR MurderNerf1 : PowerupGiver //Nerf his guns
+{
+	Game Doom
+	Game Heretic
+	Game Hexen
+	SpawnID 0
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.UNDROPPABLE
+	Inventory.MaxAmount 0
+	Powerup.Type MurderNerf 
+	States
+	{
+	Spawn:
+		GARD ABCD 6 Bright
+		Loop
+	}
+}
+
+ACTOR ABigNothing replaces TeleportFog
+{
+ RenderStyle None
+ States
+ {
+ Spawn:
+  TNT1 A 1
+  Stop
+ }
+}
+
+ACTOR Column 2028
+{
+  Game Doom
+  Radius 16
+  Height 16
+  +SOLID
+  //$Category WDI Props
+  //$Sprite COLUA0
+  //$Title "Column"
+  States
+  {
+  Spawn:
+    COLU A -1 bright
+    Stop
+  }
+}
+
+Actor DeathDropper : CustomInventory
+{
+ Inventory.Amount 1
+ Inventory.MaxAmount 0
+ +INVENTORY.AUTOACTIVATE
+ +INVENTORY.ALWAYSPICKUP
+ +INVENTORY.UNDROPPABLE
+ -INVENTORY.INVBAR
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 
+	Stop
+ }
+}
+
+Actor DeathDropper_Shotgun : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakeShotgun", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_PoolCue : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakeCue", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_Wrench : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakeWrench", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_Pipe : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakePipe", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_Shovel : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakeShovel", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_Chainsaw : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakeChainsaw", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_Beretta : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakeBeretta", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_Crossbow : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakeCrossbow", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_M1 : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakeM1", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_Brick : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakeBrick", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_Molly : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("ThrownMolly", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_NailedPlank : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakeNailedPlank", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_Plank : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakePlank", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}
+
+Actor DeathDropper_Twig : DeathDropper
+{
+ States
+ {
+   Spawn:
+	TNT1 A 1
+	Wait
+
+   Use:
+	TNT1 A 1 A_SpawnItemEx("FakeTwig", 0, 0, 24.0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	Stop
+ }
+}

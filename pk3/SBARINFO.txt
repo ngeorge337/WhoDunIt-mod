@@ -1,0 +1,147 @@
+monospacefonts true, "0";
+//interpolatehealth true, 2;
+//interpolateArmor true, 1;
+completeborder true;
+
+statusbar Fullscreen, fullscreenoffsets
+{
+
+
+	InInventory NOT HudCleaner //Don't draw anything if the player is dead.
+	{
+		InInventory HudAlive
+		{                 
+
+			InInventory NOT MurderMarker
+			{
+				DrawImage "HUDBAK1", 8, -54; // DRAW BELOW EVERYTHING
+			}
+			InInventory MurderMarker
+			{
+				DrawBar "METRFRNT", "HUDBAK1", MadMeter, horizontal, interpolate(2), 8, -54;
+			}
+			DrawImage translatable "PLAYMARK", 325, -41;
+			DrawBar "HEALF1", "HEALB1", health, horizontal, interpolate(2), 28, -43;
+			DrawBar "STAMF1", "STAMB1", PlayerStamina, horizontal, interpolate(2), 30, -25;
+
+			InInventory MurderMarker
+			{
+				//DrawBar "METRFRNT", "HUDBAK1", MadMeter, horizontal, interpolate(2), 8, -54;
+				DrawImage "HUDBORD2", 28, -47; 
+			}
+
+			InInventory NOT MurderMarker
+			{
+				DrawImage "HUDBORD1", 28, -43; 
+			}
+		
+
+			//Medikit drawing block thing
+			//===========================================
+			InInventory SmallKit, 1
+			{
+				DrawImage "STIMA0", 44, -45;
+
+			}
+
+			InInventory SmallKit, 2
+			{
+				DrawImage "STIMA0", 60, -45;
+
+			}
+
+			InInventory SmallKit, 3
+			{
+				DrawImage "STIMA0", 76, -45;
+
+			}
+
+			InInventory BigKit, 1
+			{
+				DrawImage "MEDIA0", 59, -62;
+			}
+
+			//===========================================
+			//Inventory
+			
+			DrawImage "SINVBACK", 365, -63;
+			drawselectedinventory center, SMALLFONT, 365, -63, 365, -63;
+			
+			//==========================================
+			// Antagonist resist pip. 
+			InInventory PowerResist20 { DrawImage "RESISTMK", 84, -47; }
+			InInventory PowerResist40 { DrawImage "RESISTMK", 144, -47; }
+			InInventory PowerResist60 { DrawImage "RESISTMK", 204, -47; }
+			InInventory PowerResist80 { DrawImage "RESISTMK", 264, -47; }
+		
+			/*
+			IsSelected Shotgun2
+			{
+					//drawimage "D3S1C0", 414, 163, centerbottom;
+					drawimage ammoicon1, 414, 179, centerbottom;
+			}
+
+			IsSelected Beretta
+			{
+					//drawimage "CLP4A0", 414, 163, centerbottom;
+					drawimage ammoicon1, 414, 179, centerbottom;
+			}
+
+			IsSelected M1Carbine
+			{
+					//drawimage "M1CLIP", 414, 163, centerbottom;
+					drawimage ammoicon1, 414, 179, centerbottom;
+			}
+			*/
+			
+			DrawImage "SINVBACK", 453, -63;
+			
+			InInventory PipeWrench { DrawImage "PIPPBH", 488, -20, centerbottom; }
+			InInventory LeadPipe { DrawImage "PIPPAH", 488, -20, centerbottom; }
+			InInventory PoolCue { DrawImage "POLCUE", 488, -20, centerbottom; }
+			InInventory Shovel { DrawImage "SHOVAH", 488, -20, centerbottom; }
+			InInventory Molotov { DrawImage "MOLPAH", 488, -20, centerbottom; }
+			InInventory Brick { DrawImage "BRKTAH", 488, -20, centerbottom; }
+			InInventory LChainsaw
+			{
+				DrawImage "CSAWAH", 488, -20, centerbottom;
+			}
+			InInventory Crossbow
+			{
+				DrawImage "XBOWICO", 488, -20, centerbottom;
+			}
+			InInventory Shotgun2
+			{
+				DrawImage "DHSPAH", 488, -20, centerbottom;
+				DrawNumber 4, SMALLFONT, red, Ammo SuperShells, 502, -26;
+			}
+			InInventory Beretta
+			{
+				DrawImage "PISTAH", 488, -20, centerbottom;
+				DrawNumber 4, SMALLFONT, red, Ammo PistolAmmo, 502, -26;
+			}
+			InInventory M1Carbine
+			{
+				DrawImage "M1GNYH", 488, -20, centerbottom;
+				DrawNumber 4, SMALLFONT, red, Ammo M1CarbineClipIn, 502, -26;
+			}
+			
+		}
+	}
+}
+
+
+/*
+statusbar inventoryfullscreen, fullscreenoffsets
+{
+	DrawInventoryBar Strife, alwaysshowcounter, noarrows, translucent, vertical, 6, SMALLFONT, 365, -367, -1, 120;
+}
+*/
+
+statusbar inventoryfullscreen
+{
+	//drawinventorybar Doom, 7, INDEXFON, 50, 100;
+	DrawInventoryBar Strife, alwaysshowcounter, noarrows, translucent, 6, SMALLFONT, -42, 50, -1, 120;
+	//DrawString SMALLFONT, Gold, inventorytag, , <y> [, <spacing> [, <flags>]] //For when Skulltag goes to 2.5.0 :(
+}
+

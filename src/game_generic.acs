@@ -1,0 +1,514 @@
+Script 651 (VOID) Clientside //TK vengence script
+{
+	If(!CheckInventory("MurderMarker"))
+    {
+		if(PlayerClass(PlayerNumber()) == -1  || CheckActorInventory(TID_START+PlayerNumber(), "ScriptDeath")) terminate;
+        // broadcast that this player has killed an innocent
+		Setfont("SmallFont");
+        HudMessageBold(n:0, s:" \c[Green]has avenged an innocents death!"; HUDMSG_FADEOUT|HUDMSG_LOG, 7, CR_UNTRANSLATED, 0.5, 0.85, 6.5, 1.0);
+        // tell the current player the he/she killed an innocent
+		Setfont("SmallFont");
+        Hudmessage(s:"You have avenged an innocent death!"; HUDMSG_FADEOUT, 7, CR_RED, 0.5, 0.85, 6.5, 1.0);
+        TakeInventory("TKHero", 1);
+    }
+}
+
+Script 652 (void)
+{
+	Setfont("BigFont");
+	HudMessage(s:"BACKSTABBED!"; HUDMSG_PLAIN, 0, CR_RED, 0.5, 0.85, 3.0);
+}
+
+Script 653 (void)
+{
+	TakeActorInventory(ActivatorTID(), "Slot1Filled", 1);
+	TakeActorInventory(ActivatorTID(), "Brick", 1);
+	TakeActorInventory(ActivatorTID(), "Molotov", 1);
+}
+
+Script 654 (void)
+{
+	if(CheckActorInventory(ActivatorTID(), "SawOn")) // if the saw is on, turn it off
+	{
+		TakeActorInventory(ActivatorTID(), "SawOn", 1);
+	}
+	
+	else
+	{
+		GiveActorInventory(ActivatorTID(), "SawOn", 1);
+	}
+}
+
+//Melee
+#define WEP_PIPE 10
+#define WEP_WRENCH 11
+#define WEP_CHAINSAW 12
+#define WEP_CUE 13
+#define WEP_SHOVEL 14
+
+//Guns
+#define WEP_LUGER 20
+#define WEP_SHOTGUN 21
+#define WEP_CROSSBOW 22
+#define WEP_M1 23
+#define WEP_BRICK 24
+#define WEP_MOLLY 25
+#define WEP_PLANK 26
+#define WEP_NAILPLANK 27
+#define WEP_TWIG 28
+#define WEP_BAT 29
+
+script 670 (int WepID)
+{
+	switch (WepID)
+	{
+		case WEP_PIPE:
+			Setfont("SmallFont");
+			HudMessage(s:"Steel Pipe"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_WRENCH:
+			Setfont("SmallFont");
+			HudMessage(s:"Wrench"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_CHAINSAW:
+			Setfont("SmallFont");
+			HudMessage(s:"Chainsaw"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_LUGER:
+			Setfont("SmallFont");
+			HudMessage(s:"Beretta"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_SHOTGUN:
+			Setfont("SmallFont");
+			HudMessage(s:"Shotgun"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_CROSSBOW:
+			Setfont("SmallFont");
+			HudMessage(s:"Repeater Crossbow"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_CUE:
+			Setfont("SmallFont");
+			HudMessage(s:"Pool Cue"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_SHOVEL:
+			Setfont("SmallFont");
+			HudMessage(s:"Shovel"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_M1:
+			Setfont("SmallFont");
+			HudMessage(s:"M1 Carbine"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_BRICK:
+			Setfont("SmallFont");
+			HudMessage(s:"Brick (Throwable)"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_MOLLY:
+			Setfont("SmallFont");
+			HudMessage(s:"Molotov (Throwable)"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_PLANK:
+			Setfont("SmallFont");
+			HudMessage(s:"Wood Plank"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_NAILPLANK:
+			Setfont("SmallFont");
+			HudMessage(s:"Nail Plank"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_TWIG:
+			Setfont("SmallFont");
+			HudMessage(s:"Twig"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		case WEP_BAT:
+			Setfont("SmallFont");
+			HudMessage(s:"Baseball Bat"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+			
+		default:
+			Setfont("SmallFont");
+			HudMessage(s:"Unnamed Pickup"; HUDMSG_FADEOUT, 69, CR_UNTRANSLATED, 1.5, 0.98, 1.0, 1.0);
+			break;
+	}
+}
+
+Script 407 (void)
+{
+	healthcounter[PlayerNumber()] = 0;
+}
+
+script 777 open //Health regen
+{
+	while(1)
+	{
+		for(int i = 0; i < 32; i++)
+		{
+			if(!CheckActorInventory(TID_START+i, "NoRegen") && healthcounter[i] <= 0 && !CheckActorInventory(TID_START+i, "GotHurt") && GetActorProperty(TID_START+i, APROP_HEALTH) > 0)
+			{
+				if(GetActorProperty(TID_START+i, APROP_HEALTH) % 20 != 0 || i == WDI_MurdID())
+					GiveActorInventory(TID_START+i, "Health", 1);
+			}
+			else if(CheckActorInventory(TID_START+i, "GotHurt"))
+			{
+				healthcounter[i] = 6;
+				staminacounter[i] = 3;
+				TakeActorInventory(TID_START+i, "GotHurt", 999);
+			}
+			else if(healthcounter[i] > 0)
+				healthcounter[i]--;
+			else
+				healthcounter[i] = 0;
+			
+			if(staminacounter[i] > 0)
+				staminacounter[i]--;
+		}
+		//delay(2*35);
+		delay(35);
+	}
+}
+
+// Speed setter script (handles the combat slowdown and everything)
+Script 778 Enter
+{
+	int counter = 1;
+	int sprintcounter = 0;
+	int regencounter = 0;
+	int buttons;
+	bool sprinting = false;
+	while(1)
+	{
+		while(!CheckActorInventory(TID_START+PlayerNumber(), "SlowCounter") && CheckActorInventory(TID_START+PlayerNumber(), "TKToken") < 2) 
+		{
+			Delay(1);
+			buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+			if(CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") < 20)
+				GiveActorInventory(TID_START+PlayerNumber(), "PowerDamageNerf", 1);
+			else
+				TakeActorInventory(TID_START+PlayerNumber(), "PowerDamageNerf", 1);
+				
+			if(!CheckWeapon("MurderKnife") && !CheckWeapon("LChainsaw"))
+			{
+				if((sprinting || CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") >= 20) && buttons & BT_SPEED && buttons & BT_FORWARD && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_CROUCH) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK))
+				{
+					GiveActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					if(!sprinting)
+					{
+						sprinting = true;
+						regencounter = 0;
+						TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 10);
+					}
+					else
+					{
+						sprintcounter++;
+						if(sprintcounter >= 4)
+						{
+							sprintcounter = 0;
+							TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+							if(CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") <= 0) sprinting = false;
+						}
+					}
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 1.3);
+				}
+				else
+				{
+					TakeActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					sprinting = false;
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 0.8);
+					regencounter++;
+					if(!(buttons & BT_SPEED) && !(buttons & BT_FORWARD) && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK) && !(buttons & BT_JUMP) && GetActorProperty(TID_START+PlayerNumber(), APROP_HEALTH) > 20)
+					{
+						if(regencounter >= 4 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+					else
+					{
+						if(regencounter >= 10 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+				}
+			}
+			else if(CheckWeapon("LChainsaw"))
+			{
+				if((sprinting || CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") >= 20) && buttons & BT_SPEED && buttons & BT_FORWARD && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK))
+				{
+					GiveActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					if(!sprinting)
+					{
+						sprinting = true;
+						regencounter = 0;
+						TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 10);
+					}
+					else
+					{
+						sprintcounter++;
+						if(sprintcounter >= 4)
+						{
+							sprintcounter = 0;
+							TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+							if(CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") <= 0) sprinting = false;
+						}
+					}
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 1.00);
+				}
+				else
+				{
+					TakeActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					sprinting = false;
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 0.75);
+					regencounter++;
+					if(!(buttons & BT_SPEED) && !(buttons & BT_FORWARD) && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK) && !(buttons & BT_JUMP))
+					{
+						if(regencounter >= 4 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+					else
+					{
+						if(regencounter >= 10 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+				}
+			}
+			else if(CheckWeapon("MurderKnife"))
+			{
+				if((sprinting || CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") >= 20) && buttons & BT_SPEED && buttons & BT_FORWARD && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK))
+				{
+					GiveActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					if(!sprinting)
+					{
+						sprinting = true;
+						regencounter = 0;
+						TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 10);
+					}
+					else
+					{
+						sprintcounter++;
+						if(sprintcounter >= 4)
+						{
+							sprintcounter = 0;
+							TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+							if(CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") <= 0) sprinting = false;
+						}
+					}
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 1.65);
+				}
+				else
+				{
+					TakeActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					sprinting = false;
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 0.95);
+					regencounter++;
+					if(!(buttons & BT_SPEED) && !(buttons & BT_FORWARD) && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK) && !(buttons & BT_JUMP))
+					{
+						if(regencounter >= 4 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+					else
+					{
+						if(regencounter >= 10 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+				}
+			}
+		}
+		
+		if(CheckActorInventory(TID_START+PlayerNumber(), "SlowCounter"))
+		{
+			buttons = GetPlayerInput(-1, INPUT_BUTTONS);
+			
+			if(CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") < 20)
+				GiveActorInventory(TID_START+PlayerNumber(), "PowerDamageNerf", 1);
+			else
+				TakeActorInventory(TID_START+PlayerNumber(), "PowerDamageNerf", 1);
+				
+			if(!CheckWeapon("MurderKnife") && !CheckWeapon("LChainsaw"))
+			{
+				if((sprinting || CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") >= 30) && buttons & BT_SPEED && buttons & BT_FORWARD && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK))
+				{
+					GiveActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					if(!sprinting)
+					{
+						regencounter = 0;
+						TakeActorInventory(TID_START+PlayerNumber(), "SlowCounter", 999);
+						sprinting = true;
+						TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 20);
+					}
+					else
+					{
+						TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", CheckActorInventory(TID_START+PlayerNumber(), "SlowCounter") * 3);
+						TakeActorInventory(TID_START+PlayerNumber(), "SlowCounter", 999);
+						sprintcounter++;
+						if(sprintcounter >= 4)
+						{
+							sprintcounter = 0;
+							TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+							if(CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") <= 0) sprinting = false;
+						}
+					}
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 1.3);
+				}
+				else
+				{
+					TakeActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					sprinting = false;
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 0.5);
+					regencounter++;
+					if(!(buttons & BT_SPEED) && !(buttons & BT_FORWARD) && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK) && !(buttons & BT_JUMP))
+					{
+						if(regencounter >= 4 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+					else
+					{
+						if(regencounter >= 10 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+				}
+			}
+			else if(CheckWeapon("LChainsaw"))
+			{
+				if((sprinting || CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") >= 30) && buttons & BT_SPEED && buttons & BT_FORWARD && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK))
+				{
+					GiveActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					if(!sprinting)
+					{
+						regencounter = 0;
+						TakeActorInventory(TID_START+PlayerNumber(), "SlowCounter", 999);
+						sprinting = true;
+						TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 20);
+					}
+					else
+					{
+						TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", CheckActorInventory(TID_START+PlayerNumber(), "SlowCounter") * 3);
+						TakeActorInventory(TID_START+PlayerNumber(), "SlowCounter", 999);
+						sprintcounter++;
+						if(sprintcounter >= 4)
+						{
+							sprintcounter = 0;
+							TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+							if(CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") <= 0) sprinting = false;
+						}
+					}
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 1.00);
+				}
+				else
+				{
+					TakeActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					sprinting = false;
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 0.45);
+					regencounter++;
+					if(!(buttons & BT_SPEED) && !(buttons & BT_FORWARD) && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK) && !(buttons & BT_JUMP))
+					{
+						if(regencounter >= 4 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+					else
+					{
+						if(regencounter >= 10 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+				}
+			}
+			else if(CheckWeapon("MurderKnife"))
+			{
+				if((sprinting || CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") >= 30) && buttons & BT_SPEED && buttons & BT_FORWARD && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK))
+				{
+					GiveActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					if(!sprinting)
+					{
+						regencounter = 0;
+						TakeActorInventory(TID_START+PlayerNumber(), "SlowCounter", 999);
+						sprinting = true;
+						TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 20);
+					}
+					else
+					{
+						TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", CheckActorInventory(TID_START+PlayerNumber(), "SlowCounter") * 3);
+						TakeActorInventory(TID_START+PlayerNumber(), "SlowCounter", 999);
+						sprintcounter++;
+						if(sprintcounter >= 4)
+						{
+							sprintcounter = 0;
+							TakeActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+							if(CheckActorInventory(TID_START+PlayerNumber(), "PlayerStamina") <= 0) sprinting = false;
+						}
+					}
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 1.65);
+				}
+				else
+				{
+					TakeActorInventory(TID_START+PlayerNumber(), "IsSprinting", 1);
+					sprinting = false;
+					SetActorProperty(TID_START+PlayerNumber(), APROP_SPEED, 0.65);
+					regencounter++;
+					if(!(buttons & BT_SPEED) && !(buttons & BT_FORWARD) && !(buttons & BT_MOVELEFT) && !(buttons & BT_MOVERIGHT) && !(buttons & BT_BACK) && !(buttons & BT_ATTACK) && !(buttons & BT_JUMP))
+					{
+						if(regencounter >= 4 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+					else
+					{
+						if(regencounter >= 10 && staminacounter[PlayerNumber()] == 0)
+						{
+							regencounter = 0;
+							GiveActorInventory(TID_START+PlayerNumber(), "PlayerStamina", 1);
+						}
+					}
+				}
+			}
+			
+			if(counter == 36)
+			{
+				TakeActorInventory(TID_START+PlayerNumber(), "SlowCounter",1);
+				counter = 0;
+			}
+		}
+		
+		counter++;
+		Delay(1);
+	}
+}

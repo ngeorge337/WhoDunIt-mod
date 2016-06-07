@@ -1,0 +1,142 @@
+type = "Doom Builder Map Settings Configuration";
+gameconfig = "Zandronum_DoomUDMF.cfg";
+strictpatches = 0;
+
+maps
+{
+	
+	MAP01
+	{
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 1;
+				location = "D:\\Program Files\\Doom Games\\Projects\\Who Dun It\\WhoDunIt_Classic\\pk3";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+			}
+			
+		}
+		
+		defaultfloortexture = "FLOOR0_1";
+		defaultceiltexture = "CEIL1_1";
+		defaulttoptexture = "STARTAN1";
+		defaultwalltexture = "STARTAN1";
+		defaultbottomtexture = "STARTAN1";
+		custombrightness = 196;
+		customfloorheight = 0;
+		customceilheight = 128;
+		overridefloortexture = false;
+		overrideceiltexture = false;
+		overridetoptexture = false;
+		overridemiddletexture = false;
+		overridebottomtexture = false;
+		overridefloorheight = false;
+		overrideceilheight = false;
+		overridebrightness = false;
+		
+		grid
+		{
+			background = "";
+			backsource = 0;
+			backoffsetx = 0;
+			backoffsety = 0;
+			backscalex = 100;
+			backscaley = 100;
+			gridsize = 32;
+		}
+		
+		
+		fieldtypes
+		{
+			
+			sidedef
+			{
+				offsetx_mid = 1;
+			}
+			
+		}
+		
+	}
+	
+	
+	WDI14
+	{
+		defaultfloortexture = "GRANUKE1";
+		overrideceilheight = false;
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 2;
+				location = "D:\\Program Files\\Doom Games\\Projects\\Who Dun It\\WhoDunIt_Classic\\WhoDunItr84.pk3";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+			}
+			
+		}
+		
+		defaulttoptexture = "F_SKY1";
+		overridemiddletexture = false;
+		
+		grid
+		{
+			backoffsety = 0;
+			backoffsetx = 0;
+			backscalex = 100;
+			gridsize = 8;
+			background = "";
+			backsource = 0;
+			backscaley = 100;
+		}
+		
+		overridefloortexture = false;
+		customceilheight = 128;
+		customfloorheight = 0;
+		defaultceiltexture = "BLKCL1";
+		overridebrightness = false;
+		overridebottomtexture = false;
+		overridefloorheight = false;
+		overridetoptexture = false;
+		custombrightness = 196;
+		overrideceiltexture = false;
+		defaultwalltexture = "F_SKY1";
+		defaultbottomtexture = "F_SKY1";
+		
+		fieldtypes
+		{
+			
+			sidedef
+			{
+				offsetx_bottom = 1;
+				offsetx_mid = 1;
+				offsetx_top = 1;
+				offsety_mid = 1;
+				offsety_bottom = 1;
+				offsety_top = 1;
+			}
+			
+			
+			sector
+			{
+				rotationfloor = 1;
+				xpanningfloor = 1;
+				ypanningfloor = 1;
+				xpanningceiling = 1;
+				ypanningceiling = 1;
+				lightceiling = 0;
+			}
+			
+		}
+		
+	}
+	
+}
+
